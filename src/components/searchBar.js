@@ -3,7 +3,8 @@ import React from 'react';
 function SearchBar () {
 const staticPosition = {
     'position': 'fixed',
-    'top': '0'
+    'top': '0',
+    'text-align': 'center'
 }
 /*let api_key = "ddf9754a5ff837bfe897084619c561bf";
 
