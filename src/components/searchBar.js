@@ -1,6 +1,5 @@
 import React from 'react';
-import 
-
+import './searchBar.css'
 function SearchBar () {
 const staticPosition = {
     'position': 'fixed',
