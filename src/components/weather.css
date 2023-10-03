@@ -1,0 +1,15 @@
+.searchBar {
+text-align: center;
+padding: 10px;
+position: fixed;
+}
+input[type="text"] {
+    padding: 10px;
+}
+button {
+    padding: 10px 20px;
+    background-color: #007BFF; 
+    color: #fff; 
+    border: none;
+    cursor: pointer;   
+}
