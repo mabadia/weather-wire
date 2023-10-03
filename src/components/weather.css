@@ -1,7 +1,8 @@
 .searchBar {
 text-align: center;
 padding: 10px;
-position: fixed;
+position: fixed; 
+width: 600px;
 }
 input[type="text"] {
     padding: 10px;
@@ -12,4 +13,7 @@ button {
     color: #fff; 
     border: none;
     cursor: pointer;   
+}
+.app{
+    background-color: darkblue;
 }

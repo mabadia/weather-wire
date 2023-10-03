@@ -1,18 +1,42 @@
-import React, { useState } from 'react';
-import '/weather.css'
+import React, { useState, useEffect } from 'react';
+import './weather.css';
+import axios from 'axios';
+
+
 
 function SearchBar() {
     const [location, setLocation] = useState('');
-    const handleSearch = () => {
-        console.log('Searching for:', location)
-    }
+    const [weatherData, setWeatherData] = useState(null);
+    const [error, setError] = useState(null);
 
-    /*let api_key = "ddf9754a5ff837bfe897084619c561bf";
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${api_key}`;
-    let response = await fetch(url);
-    let data = response.json();
-    // const element = document.getElementsByClassName({location})
-    */
+
+    const handleSearch = async () => {
+
+        try {
+            const [city, state] = location.split(',');
+
+            if (!city || !state) {
+                setError('Please enter a valid location in the format "City, State."');
+                return;
+            }
+
+            const response = await axios.get(
+                `https://api.openweathermap.org/data/2.5/weather?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
+            );
+            if (response.data) {
+                setWeatherData(response.data);
+                setError(null);
+            } else {
+                setError('Location not found. Please check the spelling.');
+            }
+        } catch (error) {
+            console.error('Error fetching weather data:', error);
+            setError('An error occurred while fetching weather data.');
+        }
+    }
+    useEffect(() => {
+        if (weatherData) { console.log('Weather Data:', weatherData); }
+    }, [weatherData]);
 
     return (
         <div className='searchBar'>
@@ -28,3 +52,10 @@ function SearchBar() {
 }
 
 export default SearchBar;
+
+
+
+// let url = ``;
+// let response = await fetch(url);
+// let data = response.json();
+// const element = document.getElementsByClassName({location})
