@@ -1,10 +1,9 @@
+import React from 'react';
 import React, { useState, useEffect } from 'react';
 import './weather.css';
-import axios from 'axios';
+import './searchBar.css';
 
-
-
-function SearchBar() {
+function SearchBar () {
     const [location, setLocation] = useState('');
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
@@ -37,7 +36,6 @@ function SearchBar() {
     useEffect(() => {
         if (weatherData) { console.log('Weather Data:', weatherData); }
     }, [weatherData]);
-
     return (
         <div className='searchBar'>
             <input type='text'
@@ -55,7 +53,3 @@ export default SearchBar;
 
 
 
-// let url = ``;
-// let response = await fetch(url);
-// let data = response.json();
-// const element = document.getElementsByClassName({location})
