@@ -3,12 +3,15 @@ import React, { useState, useEffect } from 'react';
 import './weather.css';
 import './searchBar.css';
 
-function SearchBar () {
+
+
+function SearchBar() {
+     //global variables searchbar function
     const [location, setLocation] = useState('');
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
 
-
+//searchBar context data
     const handleSearch = async () => {
 
         try {
@@ -19,11 +22,12 @@ function SearchBar () {
                 return;
             }
 
-            const response = await axios.get(
+            const response = await fetch(
                 `https://api.openweathermap.org/data/2.5/weather?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
             );
-            if (response.data) {
-                setWeatherData(response.data);
+            if (response.ok) {
+                const data = await response.json();
+                setWeatherData(data);
                 setError(null);
             } else {
                 setError('Location not found. Please check the spelling.');
@@ -33,10 +37,13 @@ function SearchBar () {
             setError('An error occurred while fetching weather data.');
         }
     }
+
     useEffect(() => {
         if (weatherData) { console.log('Weather Data:', weatherData); }
     }, [weatherData]);
+
     return (
+        //searchBar component 
         <div className='searchBar'>
             <input type='text'
                 className='location'
@@ -50,6 +57,5 @@ function SearchBar () {
 }
 
 export default SearchBar;
-
 
 
