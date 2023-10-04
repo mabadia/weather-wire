@@ -5,11 +5,12 @@ import './weather.css';
 
 
 function SearchBar() {
+    //global variables 
     const [location, setLocation] = useState('');
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
 
-
+//searchBar context data
     const handleSearch = async () => {
 
         try {
@@ -39,7 +40,7 @@ function SearchBar() {
     useEffect(() => {
         if (weatherData) { console.log('Weather Data:', weatherData); }
     }, [weatherData]);
-
+//searchBar component 
     return (
         <div className='searchBar'>
             <input type='text'
