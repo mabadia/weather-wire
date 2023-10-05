@@ -22,7 +22,7 @@ const NavBar = () => {
               <Nav.Link id="weather" href="/">Weather</Nav.Link>
               <Nav.Link id="hourly" href="/Hourly">Hourly</Nav.Link>
               <Nav.Link id="weekly" href="/weekly">Weekly</Nav.Link>
-              <Nav.Link id="monthly" href="/monthly">Monthly</Nav.Link>
+              <Nav.Link id="Locations" href="/Locations">Locations</Nav.Link>
             </Nav>
             <Form className="d-flex">
             <Button id="signUp" href="/signUp" variant="outline-success">Sign Up</Button>

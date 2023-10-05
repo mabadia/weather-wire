@@ -4,18 +4,21 @@ import SearchBar from './components/searchBar';
 import NavBar from './components/navBar'
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import WeatherApp from './components/weather';
-import Hourly from './components/hourly';
-import Weekly from './components/weekly';
+import WeatherApp from './pages/weather';
+import Hourly from './pages/Hourly';
+import Weekly from './pages/weekly';
 import Locations from './pages/Locations';
 import SignUp from './pages/signUp';
 import Login from './pages/login';
+import { main } from '@popperjs/core';
 
 
 function App() {
   return (
+    
     <div className="App">
       <SearchBar/>
+    
       <Router>
         <>
           <NavBar />

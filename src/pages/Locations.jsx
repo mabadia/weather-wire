@@ -10,7 +10,11 @@ const Locations = () => {
 
     return (
         <div className='app'>
-            <h1>Location</h1>
+            <h1 id="Locations">Location</h1>
+            <div>
+                
+            </div>
+
         </div>
     )
 }

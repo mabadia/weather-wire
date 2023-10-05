@@ -17,3 +17,18 @@ button {
 .app{
     background-color: darkblue;
 }
+#root{
+    background-color: darkblue;
+    height: 100vh;
+}
+
+.week{
+    height: 80vh;
+    width: 70vw;
+    margin: auto;
+    background-color: white;
+}
+
+.update{
+    justify-content: space-between;
+}
