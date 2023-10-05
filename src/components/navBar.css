@@ -1,4 +1,4 @@
-#weather, #weekly, #hourly, #monthly{
+#weather, #weekly, #hourly, #Locations{
     color: white;
 }
 nav{
@@ -6,6 +6,5 @@ nav{
 }
 
 #logo{
-    
     color: white;
 }

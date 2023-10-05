@@ -17,3 +17,7 @@ button {
 .app{
     background-color: darkblue;
 }
+#root{
+    background-color: darkblue;
+    height: 100vh;
+}

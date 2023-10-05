@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './weather.css';
 import './searchBar.css';
-
+import icons from 'fa-icons'
 
 
 function SearchBar() {
