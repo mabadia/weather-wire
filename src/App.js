@@ -4,10 +4,10 @@ import SearchBar from './components/searchBar';
 import NavBar from './components/navBar'
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import WeatherApp from './components/weather';
-import Hourly from './components/hourly';
-import Weekly from './components/weekly';
-import Monthly from './components/monthly';
+import WeatherApp from './pages/weather';
+import Hourly from './pages/Hourly';
+import Weekly from './pages/weekly';
+import Locations from './pages/Locations';
 
 
 function App() {
@@ -19,9 +19,9 @@ function App() {
           <NavBar />
           <Routes>
             <Route exact path='/' element={<WeatherApp/>}/>
-            <Route exact path='/hourly' element={<Hourly/>}/>
+            <Route exact path='/Hourly' element={<Hourly/>}/>
             <Route exact path='/weekly' element={<Weekly/>}/>
-            <Route exact path='/monthly' element={<Monthly/>}/>
+            <Route exact path='/Locations' element={<Locations/>}/>
           </Routes>
         </>
       </Router>
