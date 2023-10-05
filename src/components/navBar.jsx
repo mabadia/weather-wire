@@ -20,7 +20,7 @@ const NavBar = () => {
             <Navbar.Brand id="logo" href="/">Weather-Wire</Navbar.Brand>
             <Nav id="nav" className="me-auto">
               <Nav.Link id="weather" href="/">Weather</Nav.Link>
-              <Nav.Link id="hourly" href="/hourly">Hourly</Nav.Link>
+              <Nav.Link id="hourly" href="/Hourly">Hourly</Nav.Link>
               <Nav.Link id="weekly" href="/weekly">Weekly</Nav.Link>
               <Nav.Link id="monthly" href="/monthly">Monthly</Nav.Link>
             </Nav>
