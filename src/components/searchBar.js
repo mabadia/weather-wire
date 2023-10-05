@@ -1,7 +1,7 @@
 import React from 'react';
-import React, { useState, useEffect } from 'react';
-import './weather.css';
-import './searchBar.css';
+import { useState, useEffect } from 'react';
+import './styles/weather.css';
+import './styles/searchBar.css';
 
 
 
@@ -23,7 +23,9 @@ function SearchBar() {
             }
 
             const response = await fetch(
-                `https://api.openweathermap.org/data/2.5/weather?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
+                
+                `https://api.openweathermap.org/data/2.5/weather?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.API_KEY}`
+                `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
             );
             if (response.ok) {
                 const data = await response.json();
