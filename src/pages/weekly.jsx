@@ -1,12 +1,10 @@
 import React from 'react';
-import '../components/weather.css'
+import '../components/styles/weather.css'
 
 
 
 
 const Weekly = () => {
-
-
 
     return (
         <div className='app'>
