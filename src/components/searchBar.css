@@ -1,3 +1,54 @@
-.searchBar {
+/* Search bar container */
+.search-bar {
     padding-top: 56px;
+    display: flex;
+    justify-content: center; /* Center align the input and button */
+    align-items: center;
+}
+
+
+
+
+/* Input field for location search */
+.location {
+    border: none;
+    border-bottom: 2px solid rgb(3, 96, 172); 
+    padding: 5px;
+    font-size: 18px;
+    margin-right: 10px; /* Add spacing between input and button */
+    width: 300px; 
+}
+
+
+
+
+/* Search button */
+button {
+    background-color: rgb(3, 96, 172);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+
+
+/* Hover effect for the search button */
+button:hover {
+    background-color: rgb(1, 48, 124); /* Darker color on hover */
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+
+
+
+/* Error message styling */
+.error {
+    color: #ff0000;
+    margin-top: 10px;
+    font-weight: bold;
 }

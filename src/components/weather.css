@@ -3,6 +3,7 @@ text-align: center;
 padding: 10px;
 position: fixed; 
 width: 600px;
+z-index: 2; /* Higher z-index value */
 }
 input[type="text"] {
     padding: 10px;
