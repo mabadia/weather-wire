@@ -9,7 +9,7 @@ const Weekly = () => {
 
     return (
         <div className='app'>
-            <h1>Weekly</h1>
+            <h1 id="hourly">Weekly</h1>
         </div>
     )
 }
