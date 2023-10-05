@@ -10,7 +10,7 @@ function error404 () {
               <div>
                     <img src="src\components\JPEGS\thunderstorm.avifnder" alt="cicle stones photo by unsplash" />
                     <div>
-                        Photo by <a href="https://unsplash.com/photos/BqKdvJ8a5TI">Jonathan Bowers</a> on <a href="https://unsplash.com/photos/_RBcxo9AU-U">Unsplash</a>
+                        Photo by <a href="https://unsplash.com/photos/BqKdvJ8a5TI">Jonathan Bowers</a> on <a href="https://unsplash.com/photos/BqKdvJ8a5TI">Unsplash</a>
                     </div>
                 </div>
           </main>
