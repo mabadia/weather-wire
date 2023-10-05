@@ -42,43 +42,33 @@ p {
 .clear-sky {
     background-image: url('/src/components/JPEGS/clear skies.png'); 
 }
-
 .rainy {
     background-image: url('/src/components/JPEGS/rainy.png'); 
 }
-
 .cloudy {
     background-image: url('/src/components/JPEGS/cloudy day.png');
 }
-
 .snowy {
     background-image: url('/src/components/JPEGS/snow.png'); 
 }
-
 .thunderstorm {
     background-image: url('/src/components/JPEGS/day thunderstorm.png'); 
 }
-
 .night {
     background-image: url('/src/components/JPEGS/night time.png'); 
 }
-
 .night-cloudy {
     background-image: url('/src/components/JPEGS/night cloudy.png'); 
 }
-
 .night-thunderstorm {
     background-image: url('/src/components/JPEGS/night thunderstorm.png'); 
 }
-
 .night-time {
     background-image: url('/src/components/JPEGS/night time.png'); 
 }
-
 .rainy-night {
     background-image: url('/src/components/JPEGS/rainy night.png'); 
 }
-
 .rainy-day {
     background-image: url('/src/components/JPEGS/rainy day.png'); 
 }
