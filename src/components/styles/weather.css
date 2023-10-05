@@ -1,34 +1,38 @@
 .searchBar {
-text-align: center;
-padding: 10px;
-position: fixed; 
-width: 600px;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 600px;
 }
+
 input[type="text"] {
     padding: 10px;
 }
+
 button {
     padding: 10px 20px;
-    background-color: #007BFF; 
-    color: #fff; 
+    background-color: #007BFF;
+    color: #fff;
     border: none;
-    cursor: pointer;   
+    cursor: pointer;
 }
-.app{
+
+.app {
     background-color: darkblue;
 }
-#root{
+
+#root {
     background-color: darkblue;
     height: 100vh;
 }
 
-.week{
+.week {
     height: 80vh;
     width: 70vw;
     margin: auto;
     background-color: white;
 }
 
-.update{
+.update {
     justify-content: space-between;
 }

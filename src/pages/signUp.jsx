@@ -1,4 +1,4 @@
-import React, { useRef} from 'react'
+import React, { useRef } from 'react'
 import { useNavigate } from "react-router-dom";
 import '../components/styles/signUp.css'
 
@@ -11,18 +11,18 @@ const SignUp = () => {
     const username = useRef()
     const password = useRef()
     const handleSubmit = async e => {
-        if(username.current.value&&password.current.value) {
+        if (username.current.value && password.current.value) {
             localStorage.setItem("username", username.current.value)
             localStorage.setItem("password", password.current.value)
-            
+
         }
         navigate('/')
-      };
+    };
 
 
 
     return (
-        
+
         <div className='app'>
             <h1>Sign Up</h1>
             <div className="userForm">
@@ -39,7 +39,7 @@ const SignUp = () => {
                     <div className='mb-2'>
                         <button type='submit' onClick={handleSubmit}>Sign Up</button>
                     </div>
-                    
+
                 </form>
             </div>
 

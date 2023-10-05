@@ -10,28 +10,25 @@ import './styles/navBar.css'
 
 
 const NavBar = () => {
-
-
-
-    return (
-        <>
-        <Navbar>
-          <Container>
-            <Navbar.Brand id="logo" href="/">Weather-Wire</Navbar.Brand>
-            <Nav id="nav" className="me-auto">
-              <Nav.Link id="weather" href="/">Weather</Nav.Link>
-              <Nav.Link id="hourly" href="/Hourly">Hourly</Nav.Link>
-              <Nav.Link id="weekly" href="/weekly">Weekly</Nav.Link>
-              <Nav.Link id="Locations" href="/Locations">Locations</Nav.Link>
-            </Nav>
-            <Form className="d-flex">
+  return (
+    <>
+      <Navbar>
+        <Container>
+          <Navbar.Brand id="logo" href="/">Weather-Wire</Navbar.Brand>
+          <Nav id="nav" className="me-auto">
+            <Nav.Link id="weather" href="/">Weather</Nav.Link>
+            <Nav.Link id="hourly" href="/Hourly">Hourly</Nav.Link>
+            <Nav.Link id="weekly" href="/weekly">Weekly</Nav.Link>
+            <Nav.Link id="Locations" href="/Locations">Locations</Nav.Link>
+          </Nav>
+          <Form className="d-flex">
             <Button id="signUp" href="/signUp" variant="outline-success">Sign Up</Button>
             <Button id="login" href="/login" variant="outline-success">Login</Button>
           </Form>
-          </Container>
-        </Navbar>
-        </>
-    )
+        </Container>
+      </Navbar>
+    </>
+  )
 }
 
 export default NavBar; 

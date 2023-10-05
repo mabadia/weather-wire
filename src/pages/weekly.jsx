@@ -17,13 +17,13 @@ const Weekly = () => {
                     <div>
                         2
                     </div>
-                     <div>
+                    <div>
                         3
-                    </div> 
+                    </div>
                     <div>
                         4
                     </div>
-                     <div>
+                    <div>
                         5
                     </div>
                 </main>

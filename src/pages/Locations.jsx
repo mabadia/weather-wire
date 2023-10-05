@@ -12,7 +12,7 @@ const Locations = () => {
         <div className='app'>
             <h1 id="Locations">Location</h1>
             <div>
-                
+
             </div>
 
         </div>

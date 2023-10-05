@@ -1,4 +1,4 @@
-import React, { useRef} from 'react'
+import React, { useRef } from 'react'
 import { useNavigate } from "react-router-dom";
 import '../components/styles/login.css'
 
@@ -13,22 +13,22 @@ const Login = () => {
     const user = localStorage.getItem("username", username.value)
     const pass = localStorage.getItem("password", password.value)
     const handleSubmit = async e => {
-        if(username.current.value === user &&password.current.value === pass) {
-            
-            
+        if (username.current.value === user && password.current.value === pass) {
+
+
             navigate('/')
         }
         else {
             alert('invalid Login')
-          };
-        
-      }
+        };
+
+    }
 
 
 
 
     return (
-        
+
         <div className='app'>
             <h1>Login</h1>
             <div className="userForm">
@@ -45,7 +45,7 @@ const Login = () => {
                     <div className='mb-2'>
                         <button type='submit' onClick={handleSubmit}>Login</button>
                     </div>
-                    
+
                 </form>
             </div>
 
