@@ -18,6 +18,7 @@ function App() {
   const [error, setError] = useState(null);
 
   const updateLocation = async (newLocation) => {
+    console.log('New Location:', newLocation)
     const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
     // updates location
     setLocation(newLocation);
@@ -61,7 +62,7 @@ function App() {
         <>
           <NavBar />
           <Routes>
-            <Route exact path='/' element={<WeatherApp />} />
+            <Route exact path='/' element={<WeatherApp location={location} />} />
             <Route exact path='/weekly' element={<Weekly />} />
             <Route exact path='/Locations' element={<Locations />} />
           </Routes>
