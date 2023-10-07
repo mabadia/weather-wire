@@ -4,12 +4,20 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router-dom";
 import './styles/navBar.css'
 
 
 
 
 const NavBar = () => {
+  const navigate = useNavigate()
+  const authUser = localStorage.getItem('username')
+  const authPass = localStorage.getItem('password')
+  const logout =()=> {
+    localStorage.clear();
+    navigate('/')
+  }
   return (
     <>
       <Navbar>
@@ -22,8 +30,14 @@ const NavBar = () => {
             <Nav.Link id="Locations" href="/Locations">Locations</Nav.Link>
           </Nav>
           <Form className="d-flex">
-            <Button id="signUp" href="/signUp" variant="outline-success">Sign Up</Button>
-            <Button id="login" href="/login" variant="outline-success">Login</Button>
+            {
+              authUser&&authPass ? <><Nav.Link id="logout" onClick={logout} to='/signup'>Logout</Nav.Link></>
+              : <>
+                <Button id="signUp" href="/signUp" variant="outline-success">Sign Up</Button>
+                <Button id="login" href="/login" variant="outline-success">Login</Button>
+              </>
+
+            }
           </Form>
         </Container>
       </Navbar>
