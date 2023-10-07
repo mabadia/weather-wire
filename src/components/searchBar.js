@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import './styles/weather.css';
-import './styles/searchBar.css';
-import icons from 'fa-icons'
+import './weather.css';
+import './searchBar.css';
 
 
-function SearchBar() {
-     //global variables searchbar function
+
+function SearchBar({ updateLocation }) {
+    //global variables searchbar function
     const [location, setLocation] = useState('');
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
 
-//searchBar context data
     const handleSearch = async () => {
-
         try {
             const [city, state] = location.split(',');
 
@@ -22,10 +20,11 @@ function SearchBar() {
             }
 
             const response = await fetch(
-                
-                `https://api.openweathermap.org/data/2.5/weather?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.API_KEY}`
                 `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
-            );
+                `https://api.openweathermap.org/data/2.5/weather?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
+                );
+                setError(null);
+                updateLocation(city.trim(), state.trim());
             if (response.ok) {
                 const data = await response.json();
                 setWeatherData(data);
@@ -34,29 +33,28 @@ function SearchBar() {
                 setError('Location not found. Please check the spelling.');
             }
         } catch (error) {
-            console.error('Error fetching weather data:', error);
-            setError('An error occurred while fetching weather data.');
+            console.error('Error handling search:', error);
+            setError('An error occurred while processing the search.');
         }
-    }
+    };
 
     useEffect(() => {
         if (weatherData) { console.log('Weather Data:', weatherData); }
     }, [weatherData]);
-
+    
     return (
-        //searchBar component 
-        <div className='searchBar'>
-            <input type='text'
+        <div className='search-bar'>
+            <input
+                type='text'
                 className='location'
                 placeholder='Search'
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
             />
             <button onClick={handleSearch}>SEARCH</button>
+            {error && <div className="error">{error}</div>}
         </div>
     );
 }
 
 export default SearchBar;
-
-

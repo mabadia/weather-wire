@@ -1,14 +1,11 @@
-#weather,
-#weekly,
-#hourly,
-#Locations {
+#weather, #weekly, #hourly, #monthly{
     color: white;
 }
-
-nav {
+nav{
     background-image: linear-gradient(to right, rgb(3, 96, 172), rgb(1, 48, 124));
 }
 
-#logo {
+#logo{
+    
     color: white;
 }
