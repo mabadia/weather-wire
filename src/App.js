@@ -12,14 +12,51 @@ import Login from './pages/login';
 
 
 function App() {
-  const [location, setLocation] = useState({ city: '', state: '' });
+  const [location, setLocation] = useState('');
+  const [currentWeather, setCurrentWeather] = useState(null);
+  const [forecast, setForecast] = useState([]);
+  const [error, setError] = useState(null);
 
-  const updateLocation = (newCity, newState) => {
-    setLocation({ city: newCity, state: newState });
+  const updateLocation = async (newLocation) => {
+    const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
+    // updates location
+    setLocation(newLocation);
+    try {
+      const currentWeatherResponse = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${newLocation}&units=imperial&appid=${apiKey}`
+      );
+
+      if (!currentWeatherResponse.ok) {
+        setError('Location not found. Please check the spelling.');
+        return;
+      }
+
+      const currentWeatherData = await currentWeatherResponse.json();
+      setCurrentWeather(currentWeatherData);
+      setError(null);
+
+      const weatherForecastResponse = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${newLocation}&units=imperial&appid=${apiKey}`
+      );
+
+      if (!weatherForecastResponse.ok) {
+        setError('Location not found. Please check the spelling.');
+        return;
+      }
+
+      const weatherForecastData = await weatherForecastResponse.json();
+      // Assuming the forecast data is an array in the response
+      setForecast(weatherForecastData.list || []);
+      setError(null);
+    } catch (error) {
+      console.error('Error fetching weather data:', error);
+      setError('An error occurred while fetching weather data.');
+    }
   };
+
   return (
     <div className="App">
-      <SearchBar updateLocation={updateLocation} />
+      <SearchBar location={location} updateLocation={updateLocation} />
       <Router>
         <>
           <NavBar />
@@ -36,3 +73,4 @@ function App() {
 }
 
 export default App;
+
