@@ -1,49 +1,79 @@
 import React, { useState, useEffect } from 'react';
-import './weather.css';
-import './searchBar.css';
+import './styles/weather.css';
+import './styles/searchBar.css';
 
 
 
 function SearchBar({ updateLocation }) {
     //global variables searchbar function
     const [location, setLocation] = useState('');
-    const [weatherData, setWeatherData] = useState(null);
+    const [currentWeather, setCurrentWeather] = useState(null);
+    const [forecast, setForecast] = useState([]);
     const [error, setError] = useState(null);
 
-    const handleSearch = async () => {
+    const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY
+    //searchBar context data
+    const fetchCurrentWeather = async () => {
         try {
-            const [city, state] = location.split(',');
-
-            if (!city || !state) {
-                setError('Please enter a valid location in the format "City, State."');
+            const response = await fetch(
+                `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${apiKey}`
+            );
+            if (!response.ok) {
+                setError('Location not found. Please check the spelling.');
                 return;
             }
-
-            const response = await fetch(
-                `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
-                `https://api.openweathermap.org/data/2.5/weather?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
-                );
-                setError(null);
-                updateLocation(city.trim(), state.trim());
-            if (response.ok) {
-                const data = await response.json();
-                setWeatherData(data);
-                setError(null);
-            } else {
-                setError('Location not found. Please check the spelling.');
-            }
+            const data = await response.json();
+            setCurrentWeather(data);
+            setError(null);
         } catch (error) {
-            console.error('Error handling search:', error);
-            setError('An error occurred while processing the search.');
+            console.error('Error fetching current weather data:', error);
+            setError('An error occurred while fetching current weather data.');
         }
     };
 
+    const fetchWeatherForecast = async () => {
+        try {
+            const response = await fetch(
+                `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=imperial&appid=${apiKey}`
+            );
+
+            if (!response.ok) {
+                setError('Location not found. Please check the spelling.');
+                return;
+            }
+
+            const data = await response.json();
+            // Assuming the forecast data is an array in the response
+            setForecast(data.list || []);
+            setError(null);
+        } catch (error) {
+            console.error('Error fetching weather forecast data:', error);
+            setError('An error occurred while fetching weather forecast data.');
+        }
+    };
+
+    const handleSearch = () => {
+        if (location.trim() === '') {
+            setError('Please enter a valid location.');
+            return;
+        }
+
+        fetchCurrentWeather();
+        fetchWeatherForecast();
+    };
+
     useEffect(() => {
-        if (weatherData) { console.log('Weather Data:', weatherData); }
-    }, [weatherData]);
-    
+        if (currentWeather) {
+            console.log('Weather Data:', currentWeather);
+        }
+        if (forecast.length > 0) {
+            console.log('Weather Forecast Data:', forecast);
+        }
+    }, [currentWeather, forecast]);
+
     return (
-        <div className='search-bar'>
+        //searchBar component 
+        <div className='searchBar'>
             <input
                 type='text'
                 className='location'
@@ -58,3 +88,7 @@ function SearchBar({ updateLocation }) {
 }
 
 export default SearchBar;
+
+// `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
+// `https://api.openweathermap.org/data/2.5/weather?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.API_KEY}`
+// `http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}`
