@@ -1,7 +1,7 @@
 
 // Import necessary modules and the CSS file for styling
 import React, { useState, useEffect } from 'react';
-import './CurrentWeather.css'; // Import the CSS file for styling
+import '../components/styles/CurrentWeather.css'; // Import the CSS file for styling
 
 // Create the CurrentWeather component, which accepts city and state as props
 const CurrentWeather = ({ city, state }) => {

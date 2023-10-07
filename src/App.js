@@ -33,7 +33,7 @@ function App() {
           </Routes>
         </>
       </Router>
-      <CurrentWeather city={location.city} state={location.state} />
+
     </div>
   );
 }

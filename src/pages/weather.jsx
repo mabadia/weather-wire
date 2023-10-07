@@ -6,13 +6,14 @@ import CurrentWeather from '../components/CurrentWeather';
 
 
 const WeatherApp = () => {
-
+    const city = 'Long Beach'; 
+    const state = 'CA';
 
 
     return (
         <div className='app'>
             <h1 id="weather">Weather</h1>
-            <CurrentWeather />
+            <CurrentWeather city={city} state={state} />
         </div>
     )
 }
