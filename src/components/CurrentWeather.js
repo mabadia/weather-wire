@@ -71,10 +71,10 @@ const CurrentWeather = ({ city, state }) => {
                 <>
                     <h2>Current Weather</h2>
                     <p>Location: {weatherData.name}, {weatherData.sys.country}</p>
-                    <p>Temperature: {weatherData.main.temp} °F</p>
+                    <p>Temperature: {Math.round(weatherData.main.temp)} °F</p>
                     <p>Weather: {weatherData.weather[0].description}</p>
                     <p>Humidity: {weatherData.main.humidity}%</p>
-                    <p>Wind Speed: {weatherData.wind.speed} mph</p>
+                    <p>Wind Speed: {Math.round(weatherData.wind.speed)} mph</p>
                 </>
             )}
             {error && <div className="error">{error}</div>}

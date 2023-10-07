@@ -16,7 +16,7 @@ const Weekly = () => {
         const state = '';
         const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
         //api endpoint URL
-        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast/hourly?q=${city.trim()},${state.trim()}&units=imperial&appid=${apiKey}`;
+        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.trim()},${state.trim()}&units=imperial&appid=${apiKey}`;
 
         // api request
         fetch(apiUrl)
@@ -53,11 +53,11 @@ const Weekly = () => {
             }
             dailyForecast[day].push({
                 date: date.toLocaleDateString(),
-                temp: hourlyData.main.temp,
+                temp: Math.round(hourlyData.main.temp),
                 weatherDescription: hourlyData.weather[0].description,
                 // weatherIcon: getWeatherIcon(hourlyData.weather[0].description),
-                humidity: hourlyData.main.humidity,
-                windSpeed: hourlyData.wind.speed,
+                humidity: Math.round(hourlyData.main.humidity),
+                windSpeed: Math.round(hourlyData.wind.speed),
             });
         });
         // converts weather values into array
