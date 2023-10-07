@@ -55,7 +55,7 @@ const Weekly = () => {
                 date: date.toLocaleDateString(),
                 temp: hourlyData.main.temp,
                 weatherDescription: hourlyData.weather[0].description,
-                weatherIcon: getWeatherIcon(hourlyData.weather[0].description),
+                // weatherIcon: getWeatherIcon(hourlyData.weather[0].description),
                 humidity: hourlyData.main.humidity,
                 windSpeed: hourlyData.wind.speed,
             });
@@ -63,10 +63,7 @@ const Weekly = () => {
         // converts weather values into array
         return Object.values(dailyForecast);
     };
-    // function getWeatherIcon(description) {
 
-    //     return ['fas', 'question-circle'];
-    // }
 
     return (
         <div className='app'>
@@ -85,7 +82,10 @@ const Weekly = () => {
 export default Weekly; 
 
 
+    // function getWeatherIcon(description) {
 
+    //     return ['fas', 'question-circle'];
+    // }
 // Weather Data:
 // Object
 // base: "stations"

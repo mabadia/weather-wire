@@ -26,14 +26,14 @@ function App() {
         <>
           <NavBar />
           <Routes>
-            <Route exact path='/' element={<CurrentWeather city={location.city} state={location.state} />} />
+            <Route exact path='/' element={<WeatherApp />} />
             <Route exact path='/Hourly' element={<Hourly />} />
             <Route exact path='/weekly' element={<Weekly />} />
             <Route exact path='/Locations' element={<Locations />} />
           </Routes>
         </>
       </Router>
-
+      <CurrentWeather city={location.city} state={location.state} />
     </div>
   );
 }

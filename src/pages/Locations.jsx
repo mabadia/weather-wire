@@ -1,6 +1,6 @@
 import React from 'react'
 import '../components/styles/weather.css'
-
+import '../components/styles/navBar.css'
 
 
 
