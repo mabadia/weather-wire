@@ -1,47 +1,75 @@
 import React, { useState, useEffect } from 'react';
 import './styles/weather.css';
 import './styles/searchBar.css';
-import icons from 'fa-icons'
+
 
 
 function SearchBar() {
-     //global variables searchbar function
+    //global variables searchbar function
     const [location, setLocation] = useState('');
-    const [weatherData, setWeatherData] = useState(null);
+    const [currentWeather, setCurrentWeather] = useState(null);
+    const [forecast, setForecast] = useState([]);
     const [error, setError] = useState(null);
 
-//searchBar context data
-    const handleSearch = async () => {
+    const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY
 
+    const fetchCurrentWeather = async () => {
         try {
-            const [city, state] = location.split(',');
+            const response = await fetch(
+                `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${apiKey}`
+            );
+            if (!response.ok) {
+                setError('Location not found. Please check the spelling.');
+                return;
+            }
+            const data = await response.json();
+            setCurrentWeather(data);
+            setError(null);
+        } catch (error) {
+            console.error('Error fetching current weather data:', error);
+            setError('An error occurred while fetching current weather data.');
+        }
+    };
 
-            if (!city || !state) {
-                setError('Please enter a valid location in the format "City, State."');
+    const fetchWeatherForecast = async () => {
+        try {
+            const response = await fetch(
+                `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=imperial&appid=${apiKey}`
+            );
+
+            if (!response.ok) {
+                setError('Location not found. Please check the spelling.');
                 return;
             }
 
-            const response = await fetch(
-                
-                `https://api.openweathermap.org/data/2.5/weather?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.API_KEY}`
-                `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
-            );
-            if (response.ok) {
-                const data = await response.json();
-                setWeatherData(data);
-                setError(null);
-            } else {
-                setError('Location not found. Please check the spelling.');
-            }
+            const data = await response.json();
+            // Assuming the forecast data is an array in the response
+            setForecast(data.list || []);
+            setError(null);
         } catch (error) {
-            console.error('Error fetching weather data:', error);
-            setError('An error occurred while fetching weather data.');
+            console.error('Error fetching weather forecast data:', error);
+            setError('An error occurred while fetching weather forecast data.');
         }
-    }
+    };
+
+    const handleSearch = () => {
+        if (location.trim() === '') {
+            setError('Please enter a valid location.');
+            return;
+        }
+
+        fetchCurrentWeather();
+        fetchWeatherForecast();
+    };
 
     useEffect(() => {
-        if (weatherData) { console.log('Weather Data:', weatherData); }
-    }, [weatherData]);
+        if (currentWeather) {
+            console.log('Weather Data:', currentWeather);
+        }
+        if (forecast.length > 0) {
+            console.log('Weather Forecast Data:', forecast);
+        }
+    }, [currentWeather, forecast]);
 
     return (
         //searchBar component 
@@ -60,3 +88,6 @@ function SearchBar() {
 export default SearchBar;
 
 
+// `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
+// `https://api.openweathermap.org/data/2.5/weather?q=${city.trim()},${state.trim()}&units=imperial&appid=${process.env.API_KEY}`
+// `http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}`
