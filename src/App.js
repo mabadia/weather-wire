@@ -31,5 +31,35 @@ function App() {
         </div>
     );
 }
-
 export default App;
+
+const AppRouter = require('express').Router();
+const App = require('../components/CurrentWeather');
+
+AppRouter.get('/', (req, res) => {
+    res.render('components/Index', { App })
+
+});
+
+AppRouter.get('/new', (req, res) => {
+    res.render('components/Hourly');
+});
+
+AppRouter.get('/:id', (req,res) =>{
+    let id = Number(req.params.id);
+    if (isNaN(id)) {
+        res.render('Error404');
+       } else if (!App[id]) {
+        res.render('Error404');
+       }  
+    else {
+        res.render('components/Location', { place: App[id], id });
+    }
+});
+
+
+
+
+
+
+
