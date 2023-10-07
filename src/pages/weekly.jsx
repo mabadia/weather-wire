@@ -55,7 +55,6 @@ const Weekly = () => {
                 date: date.toLocaleDateString(),
                 temp: Math.round(hourlyData.main.temp),
                 weatherDescription: hourlyData.weather[0].description,
-                // weatherIcon: getWeatherIcon(hourlyData.weather[0].description),
                 humidity: Math.round(hourlyData.main.humidity),
                 windSpeed: Math.round(hourlyData.wind.speed),
             });
