@@ -1,13 +1,7 @@
 
 // Import necessary modules and the CSS file for styling
 import React, { useState, useEffect } from 'react';
-import '../components/styles/CurrentWeather.css'; // Import the CSS file for styling
-
-// Create the CurrentWeather component, which accepts city and state as props
-const CurrentWeather = ({ city, state }) => {
-    // Define states to store weather data and error messages
-    const [weatherData, setWeatherData] = useState(null); // State to store weather data
-    const [error, setError] = useState(null); // State to store error messages
+import '../components/styles/CurrentWeather.css'; 
 
     // Define a mapping of weather conditions to class names for background styling
     const weatherConditionClasses = {
@@ -24,6 +18,12 @@ const CurrentWeather = ({ city, state }) => {
         'rainy day': 'rainy-day', // CSS class for rainy day weather
         // Add more conditions as needed for other weather types-NEED TO ADD MORE FOR ALL POSSIBLE WEATHER:OUTCOMES!
     };
+    
+// Create the CurrentWeather component, which accepts city and state as props
+const CurrentWeather = ({ city, state }) => {
+    // Define states to store weather data and error messages
+    const [weatherData, setWeatherData] = useState(null); // State to store weather data
+    const [error, setError] = useState(null); // State to store error messages
 
     // useEffect hook to fetch weather data when the component is mounted or when city/state changes
     useEffect(() => {

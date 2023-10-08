@@ -11,11 +11,13 @@ import SignUp from './pages/signUp';
 import Login from './pages/login';
 
 
+
 function App() {
   const [location, setLocation] = useState('');
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState([]);
   const [error, setError] = useState(null);
+
 
   const updateLocation = async (newLocation) => {
     const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
