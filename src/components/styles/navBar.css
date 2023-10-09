@@ -3,9 +3,12 @@
 }
 nav{
     background-image: linear-gradient(to right, rgb(3, 96, 172), rgb(1, 48, 124));
+    z-index: 2;
 }
 
 #logo{
     
     color: white;
 }
+
+ 
