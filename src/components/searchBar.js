@@ -14,8 +14,6 @@ function SearchBar({ updateWeatherData }) {
     }
   };
 
-
-  
   return (
     <div className='searchBar'>
       <input
