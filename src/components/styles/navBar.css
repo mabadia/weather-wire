@@ -9,8 +9,6 @@ nav {
     z-index: 1; /* Lower z-index value */
 }
 
-
-
 /* Navigation links */
 #weather, #weekly, #hourly, #Locations {
     color: white;

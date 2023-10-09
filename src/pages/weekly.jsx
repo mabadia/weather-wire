@@ -3,7 +3,6 @@ import '../components/styles/weather.css';
 import FiveDay from '../components/5Day';
 
 
-
 const Weekly = () => {
     // useState for forcast data 
     const [forecastData, setForecastData] = useState([]);
@@ -16,9 +15,9 @@ const Weekly = () => {
         const state = '';
         const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
         //api endpoint URL
-        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.trim()},${state.trim()}&units=imperial&appid=${apiKey}`;
+        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.trim()},${state.trim()}&appid=${apiKey}`;
 
-        // api request
+        // api request api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&units=imperial&appid=
         fetch(apiUrl)
             .then((response) => {
                 if (!response.ok) {
