@@ -1,5 +1,6 @@
 
-#input {
+#inputLogin {
     width: 40vw;
-    margin-left: 300px
+    margin-left: 500px;
+    display: flex
 }
