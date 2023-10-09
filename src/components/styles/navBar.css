@@ -12,7 +12,7 @@ nav {
 
 
 /* Navigation links */
-#weather, #weekly, #hourly, #monthly {
+#weather, #weekly, #hourly, #Locations {
     color: white;
     text-decoration: none; 
     margin: 0 15px; 
