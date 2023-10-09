@@ -1,7 +1,8 @@
 
 // Import necessary modules and the CSS file for styling
 import React, { useState, useEffect } from 'react';
-import '../components/styles/CurrentWeather.css'; 
+import '../components/styles/CurrentWeather.css';// Import the CSS file for styling
+
 
     // Define a mapping of weather conditions to class names for background styling
     const weatherConditionClasses = {
@@ -14,7 +15,7 @@ import '../components/styles/CurrentWeather.css';
         'night cloud': 'night-cloudy', // CSS class for night cloudy weather
         'night thunderstorm': 'night-thunderstorm', // CSS class for night thunderstorm weather
         'night time': 'night-time', // CSS class for night time weather
-        'rainy night': 'rainy-night', // CSS class for rainy night weather
+        'rainy night': 'rainy-night', // CSS class for rainy night weatherAl
         'rainy day': 'rainy-day', // CSS class for rainy day weather
         // Add more conditions as needed for other weather types-NEED TO ADD MORE FOR ALL POSSIBLE WEATHER:OUTCOMES!
     };
