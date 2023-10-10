@@ -55,16 +55,15 @@ function App() {
         <>
           <NavBar />
           <Routes>
-            <Route
-              exact
-              path="/"
-              element={<WeatherApp currentWeather={currentWeather} error={error} />}
-            />
+            <Route exact path="/" element={<WeatherApp currentWeather={currentWeather} error={error} />}/>
             <Route exact path="/weekly" element={<Weekly />} />
             <Route exact path="/Locations" element={<Locations />} />
+            <Route exact path="/signUp" element={<SignUp />} /> 
+            <Route exact path="/Login" element={<Login />} />
           </Routes>
         </>
       </Router>
+    
     </div>
   );
 }
