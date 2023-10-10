@@ -34,7 +34,7 @@ const CurrentWeather = ({ city, state }) => {
         // Check if both city and state are provided
         if (city && state) {
             // Construct the API URL to fetch weather data
-            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state}&units=imperial&appid=${apiKey}`;
+            const apiUrl = `https://api.weather.gov/points/{lat},{lon}`;
 
             // Fetch weather data from the OpenWeatherMap API
             fetch(apiUrl)

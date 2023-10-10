@@ -14,11 +14,17 @@ import Login from './pages/login';
 
 
 function App() {
-
   const [currentWeather, setCurrentWeather] = useState(null);
-
   const [error, setError] = useState(null);
+  const [location, setLocation] = useState('');
+  const [coordinates, setCoordinates] = useState(null);
 
+  const updateLocation = (newLocation) => {
+    setLocation(newLocation);
+  };
+  const updateCoordinates = (newCoordinates) => {
+    setCoordinates(newCoordinates);
+  };
   // Function to update weather data based on the searched location
   const updateWeatherData = async (newLocation) => {
     console.log('New Location:', newLocation);
@@ -50,12 +56,12 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar updateWeatherData={updateWeatherData} />
+      <SearchBar updateLocation={updateLocation} updateCoordinates={updateCoordinates} />
       <Router>
         <>
           <NavBar />
           <Routes>
-            <Route exact path="/" element={<WeatherApp currentWeather={currentWeather} error={error} />}/>
+            <Route exact path="/" element={<WeatherApp coordinates={coordinates} />}/>
             <Route exact path="/weekly" element={<Weekly />} />
             <Route exact path="/Locations" element={<Locations />} />
             <Route exact path="/signUp" element={<SignUp />} /> 

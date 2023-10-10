@@ -70,8 +70,9 @@ const Weekly = () => {
             {error && <p>Error: {error}</p>}
             <div className='week'>
                 <h2>Long Beach, CA</h2>
-
+                {forecastData.length > 0 && (
                 <FiveDay forecastData={forecastData} />
+            )}
             </div>
         </div>
     )
