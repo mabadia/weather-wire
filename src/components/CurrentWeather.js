@@ -22,35 +22,45 @@ import '../components/styles/CurrentWeather.css';// Import the CSS file for styl
     
 // Create the CurrentWeather component, which accepts city and state as props
 const CurrentWeather = ({ city, state }) => {
-    // Define states to store weather data and error messages
-    const [weatherData, setWeatherData] = useState(null); // State to store weather data
-    const [error, setError] = useState(null); // State to store error messages
 
-    // useEffect hook to fetch weather data when the component is mounted or when city/state changes
-    useEffect(() => {
-        // Retrieve the OpenWeatherMap API key from environment variables
+    const [weatherData, setWeatherData] = useState(null); 
+    const [error, setError] = useState(null); 
+
+
+    const fetchWeatherByLatLon = (latitude, longitude) => {
         const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
+    
+        fetch(apiUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            setWeatherData(data);
+            setError(null);
+          })
+          .catch((error) => {
+            console.error('Error fetching data:', error);
+            setError('An error occurred while fetching weather data.');
+          });
+      };
 
-        // Check if both city and state are provided
+
+
+      useEffect(() => {
+        const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
+    
         if (city && state) {
-            // Construct the API URL to fetch weather data
-            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state}&units=imperial&appid=${apiKey}`;
-
-            // Fetch weather data from the OpenWeatherMap API
-            fetch(apiUrl)
-                .then((response) => response.json())
-                .then((data) => {
-                    // If successful, update the weatherData state with the received data and clear any existing errors
-                    setWeatherData(data);
-                    setError(null);
-                })
-                .catch((error) => {
-                    // If an error occurs during the fetch, log the error and set an error message
-                    console.error('Error fetching data:', error);
-                    setError('An error occurred while fetching weather data.');
-                });
+        
+          const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state}&units=imperial&appid=${apiKey}`;
+          fetchWeatherByLatLon(apiUrl);
+        } else {
+          
+          const latitude = 40.7128; 
+          const longitude = -74.0060; 
+          fetchWeatherByLatLon(latitude, longitude);
         }
-    }, [city, state]);
+      }, [city, state]);
+
+
 
     // Function to determine the CSS class for the background based on weather conditions
     const getWeatherBackgroundClass = () => {
@@ -58,10 +68,10 @@ const CurrentWeather = ({ city, state }) => {
             // Extract the weather condition from the weather data
             const weatherCondition = weatherData.weather[0].main.toLowerCase();
 
-            // To check if a class exists for the weather condition, otherwise use 'default-background'
+            
             return weatherConditionClasses[weatherCondition] || 'default-background';
         }
-        // Default class if weather data is not available
+       
         return 'default-background';
     };
 

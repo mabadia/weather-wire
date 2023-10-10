@@ -19,7 +19,7 @@ function SearchBar({ updateWeatherData }) {
       <input
         type='text'
         className='location'
-        placeholder='Search'
+        placeholder='Search'b 
         value={location}
         onChange={(e) => setLocation(e.target.value)}
       />

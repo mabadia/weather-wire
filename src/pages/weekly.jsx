@@ -129,3 +129,6 @@ export default Weekly;
 // gust: 3.44
 // speed: 3.24
 // }
+
+
+
