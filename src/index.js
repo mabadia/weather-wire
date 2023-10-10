@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+const mongoose = require('mongoose');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,6 +12,8 @@ root.render(
   </React.StrictMode>
 );
 
+
+mongoose.connect('mongodb://localhost:27017')
 
 
 // If you want to start measuring performance in your app, pass a function
