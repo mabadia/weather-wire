@@ -7,9 +7,6 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 import './styles/navBar.css'
 
-
-
-
 const NavBar = () => {
   const navigate = useNavigate()
   const authUser = localStorage.getItem('username')
