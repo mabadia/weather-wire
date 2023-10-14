@@ -50,12 +50,12 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar updateWeatherData={updateWeatherData} />
+      <SearchBar />
       <Router>
         <>
           <NavBar />
           <Routes>
-            <Route exact path="/" element={<WeatherApp currentWeather={currentWeather} error={error} />}/>
+            <Route exact path="/" element={<WeatherApp />}/>
             <Route exact path="/weekly" element={<Weekly />} />
             <Route exact path="/Locations" element={<Locations />} />
             <Route exact path="/signUp" element={<SignUp />} /> 
